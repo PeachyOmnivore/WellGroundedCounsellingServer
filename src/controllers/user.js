@@ -1,16 +1,8 @@
-
-
 const login = (req, res) => {
-    const {username, password} = req.body
-    return console.log(username, password)
-}
-
-const registerUser = (req, res) => {
-    const {username, password} = req.body
-    return console.log(username, password)
+    const {email, password} = req.body
+    return console.log(email, password)
 }
 
 module.exports = {
-    login,
-    registerUser
+    login
 }
