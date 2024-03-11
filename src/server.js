@@ -10,6 +10,10 @@ app.use(cors())
 app.use(express.json())
 
 const userRouter = require('./routers/user.js')
+const registerRouter = require('./routers/register.js')
+
+app.use('/register', registerRouter)
 app.use('/users', userRouter)
+
 
 module.exports = app
