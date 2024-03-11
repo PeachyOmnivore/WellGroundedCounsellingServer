@@ -9,4 +9,7 @@ app.use(morgan("dev"))
 app.use(cors())
 app.use(express.json())
 
+const userRouter = require('./routers/user.js')
+app.use('/users', userRouter)
+
 module.exports = app
