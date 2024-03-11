@@ -6,6 +6,9 @@ erDiagram
 
 USER {
     id Int(PK)
+    firstName String
+    lastName String
+    phone Int
     email String(Unique)
     password String
     createdAt DateTime
