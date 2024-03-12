@@ -7,8 +7,11 @@ const findUser = async (email) => {
             email,
         },
         select: {
+            firstName: true,
+            lastName: true,
+            phone: true,
             email: true,
-            password: true,
+            password: true
         },
     });
 };
