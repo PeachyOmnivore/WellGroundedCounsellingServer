@@ -29,6 +29,14 @@ const login = async (req, res) => {
     res.status(201).json({ token: token, message: "You are logged in!" });
 };
 
+const getUser = async (req, res) => {
+    console.log(req.user)
+    const {email} = req.user;
+    const foundUser = await findUser(email)
+    return res.status(200).json({foundUser})
+}
+
 module.exports = {
-    login
+    login,
+    getUser
 }
