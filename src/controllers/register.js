@@ -1,11 +1,14 @@
+require('dotenv').config();
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const secret = process.env.JWT_SECRET;
 const  { registerDB } = require('../domain/register.js')
 
 const registerUser = async (req, res) => {
     const { firstName, lastName, phone, email, password } = req.body;
 
     if (!password || !email) {
-        return res.status(409).json({ error: "Please enter email or password" });
+        return res.status(409).json({ message: "Please enter email or password" });
     }
 
     try {
@@ -18,7 +21,9 @@ const registerUser = async (req, res) => {
             email,
             hash
         );
-        res.status(201).json({ data: registeredUser });
+
+        const token = jwt.sign(email, secret)
+        res.status(201).json({ user: registeredUser, token: token });
 
     } catch (err) {
         console.log(err.message)
