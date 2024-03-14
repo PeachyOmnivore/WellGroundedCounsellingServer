@@ -11,9 +11,11 @@ app.use(express.json())
 
 const userRouter = require('./routers/user.js')
 const registerRouter = require('./routers/register.js')
+const bookingRouter = require('./routers/booking.js')
 
 app.use('/register', registerRouter)
 app.use('/users', userRouter)
+app.use('/bookings', bookingRouter)
 
 
 module.exports = app
