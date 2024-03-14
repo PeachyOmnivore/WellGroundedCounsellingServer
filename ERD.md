@@ -15,15 +15,22 @@ USER {
     updatedAt DateTime
 }
 
-BOOKING {
+AVAILABLEDATE {
     id Int(PK)
+    month  String
+    day    Int
     userId Int(FK)
-    date dateTime
-    time time
-    createdAt DateTime
-    updatedAt DateTime
 }
 
-USER ||--|{ BOOKING : canHave
+TIMESLOT {
+    id Int(PK)
+    availableDateId Int
+    time String
+    status String
+}
+
+USER ||--|{ AVAILABLEDATE : canHave
+
+AVAILABLEDATE ||--|{ TIMESLOT : has
 
 ```
