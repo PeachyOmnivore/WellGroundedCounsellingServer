@@ -9,10 +9,29 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  firstName    String?
-  lastName     String?
-  phone        String
-  email        String   @unique
-  password     String
+  id             Int             @id @default(autoincrement())
+  firstName      String?
+  lastName       String?
+  phone          String
+  email          String          @unique
+  password       String
+  role           String          @default("CLIENT")
+  availableDates AvailableDate[]
+}
+
+model AvailableDate {
+  id        Int        @id @default(autoincrement())
+  month     String?
+  day       Int?
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id])
+  timeSlots TimeSlot[]
+}
+
+model TimeSlot {
+  id              Int           @id @default(autoincrement())
+  availableDate   AvailableDate @relation(fields: [availableDateId], references: [id])
+  availableDateId Int
+  time            String
+  status          String
 }
