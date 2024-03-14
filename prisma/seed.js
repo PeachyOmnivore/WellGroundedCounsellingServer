@@ -25,7 +25,7 @@ async function seed() {
 
     console.log("Created 1 Admin User, 1 Client User", users);
 
-    const availableDatesData = await prisma.post.createMany({
+    const availableDatesData = await prisma.availableDate.createMany({
         data: [
             {
                 month: "March",

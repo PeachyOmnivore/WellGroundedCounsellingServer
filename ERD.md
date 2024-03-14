@@ -29,7 +29,7 @@ TIMESLOT {
     status String
 }
 
-USER ||--|{ AVAILABLEDATE : canHave
+USER ||--|{ TIMESLOT : canHave
 
 AVAILABLEDATE ||--|{ TIMESLOT : has
 

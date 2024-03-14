@@ -16,15 +16,13 @@ model User {
   email          String          @unique
   password       String
   role           String          @default("CLIENT")
-  availableDates AvailableDate[]
+  timeSlot       TimeSlot[]
 }
 
 model AvailableDate {
   id        Int        @id @default(autoincrement())
   month     String?
   day       Int?
-  userId    Int
-  user      User       @relation(fields: [userId], references: [id])
   timeSlots TimeSlot[]
 }
 
@@ -32,6 +30,8 @@ model TimeSlot {
   id              Int           @id @default(autoincrement())
   availableDate   AvailableDate @relation(fields: [availableDateId], references: [id])
   availableDateId Int
+  userId    Int
+  user      User       @relation(fields: [userId], references: [id])
   time            String
   status          String
 }
