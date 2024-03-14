@@ -7,7 +7,7 @@ async function seed() {
         data: [
             {
                 email: "fiona.hutch@hotmail.co.uk",
-                password: "Pass123!",
+                password: "$2b$12$4ZayACLYxgqEyskOacb8juj8Kst2DiSS6.TeiEBsKPQ7N9iwR8oH2",
                 role: "ADMIN",
                 firstName: "Fiona",
                 lastName: "Hutchison",
@@ -15,7 +15,7 @@ async function seed() {
             },
             {
                 email: "Lad_777@hotmail.com",
-                password: "Pass123!",
+                password: "$2b$12$RsDfBYUhaZw9xXKVGieiiehsJt6Fhggc8qaZcyGh.pCapN7K7BO2G",
                 firstName: "Lukas",
                 lastName: "Dembicki",
                 phone: "999999999",
