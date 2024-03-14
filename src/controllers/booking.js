@@ -1,5 +1,4 @@
-
-const { findBookings, bookATimeSlotDB} = require('../domain/booking.js')
+const { findBookings, bookATimeSlotDB, availableDateDB, cancelTimeSlotDB} = require('../domain/booking.js')
 
 const getBookings = async (req, res) => {
     const foundBookings = await findBookings()
@@ -7,16 +6,30 @@ const getBookings = async (req, res) => {
 }
 
 const bookATimeSlot = async (req, res) => {
-  const { userId }  = req.body
-  console.log("userId  ========>>>>", userId)
-  const timeSlotId  = Number(req.params.id)
-  console.log("timeSlotId ======> ", timeSlotId)
+  const { userId } = req.body
+  const timeSlotId = Number(req.params.id)
 
   const bookedSlot = await bookATimeSlotDB(userId, timeSlotId)
   return res.status(200).json({bookedSlot})
 }
 
+const getAvailableDatebyId = async (req, res) => {
+  const dateId = Number(req.params.id)
+
+  const availableDate = await availableDateDB(dateId)
+  return res.status(200).json({availableDate})
+}
+
+const cancelTimeSlot = async ( req, res ) => {
+  const timeSlotId = Number(req.params.id)
+
+  const cancelledTimeSlot = await cancelTimeSlotDB(timeSlotId)
+  res.status(201).json({cancelledTimeSlot})
+}
+
 module.exports = {
     getBookings,
-    bookATimeSlot
+    bookATimeSlot,
+    getAvailableDatebyId,
+    cancelTimeSlot
 }

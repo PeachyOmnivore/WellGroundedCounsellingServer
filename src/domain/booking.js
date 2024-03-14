@@ -15,9 +15,27 @@ const bookATimeSlotDB = async (userId, timeSlotId) => await prisma.timeSlot.upda
     status: "Unavailable",
     userId,
   }
+});
+
+const availableDateDB = async (id) => await prisma.availableDate.findFirst({
+  where: {
+    id,
+  }
+})
+
+const cancelTimeSlotDB = async (timeSlotId) => await prisma.timeSlot.update({
+  where: {
+    id: timeSlotId
+  },
+  data: {
+    userId: null,
+    status: "Available"
+  }
 })
 
 module.exports = {
     findBookings,
-    bookATimeSlotDB
+    bookATimeSlotDB,
+    availableDateDB,
+    cancelTimeSlotDB
 }
