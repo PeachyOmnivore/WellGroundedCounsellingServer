@@ -7,6 +7,7 @@ const findUser = async (email) => {
             email,
         },
         select: {
+            id: true,
             firstName: true,
             lastName: true,
             phone: true,

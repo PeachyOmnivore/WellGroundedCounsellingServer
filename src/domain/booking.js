@@ -7,6 +7,17 @@ const findBookings = async () => await prisma.availableDate.findMany({
   },
 });
 
+const bookATimeSlotDB = async (userId, timeSlotId) => await prisma.timeSlot.update({
+  where: {
+    id: timeSlotId
+  },
+  data: {
+    status: "Unavailable",
+    userId,
+  }
+})
+
 module.exports = {
-    findBookings
+    findBookings,
+    bookATimeSlotDB
 }
