@@ -27,106 +27,57 @@ async function seed() {
 
     const availableDatesData = await prisma.availableDate.createMany({
         data: [
-            {
-                month: "March",
-                day: 1,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
-            {
-                month: "March",
-                day: 2,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
-            {
-                month: "March",
-                day: 3,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
-            {
-                month: "March",
-                day: 4,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
-            {
-                month: "April",
-                day: 1,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
-            {
-                month: "April",
-                day: 2,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
-            {
-                month: "April",
-                day: 3,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
-            {
-                month: "April",
-                day: 4,
-                timeSlots: {
-                    connect: [
-                        { time: "10:00", status: "Available" },
-                        { time: "12:00", status: "Available" },
-                        { time: "14:00", status: "Available" },
-                        { time: "16:00", status: "Available" },
-                    ],
-                },
-            },
+            { month: "March", day: 1 },
+            { month: "March", day: 2 },
+            { month: "March", day: 3 },
+            { month: "March", day: 4 },
+            { month: "April", day: 1 },
+            { month: "April", day: 2 },
+            { month: "April", day: 3 },
+            { month: "April", day: 4 },
         ],
     });
 
     console.log("created Date Data:", availableDatesData);
+
+    const timeSlotsData = await prisma.timeSlot.createMany({
+        data: [
+            { time: "10:00", status: "Available", availableDateId: 1 },
+            { time: "12:00", status: "Available", availableDateId: 1 },
+            { time: "14:00", status: "Available", availableDateId: 1 },
+            { time: "16:00", status: "Available", availableDateId: 1 },
+            { time: "10:00", status: "Available", availableDateId: 2 },
+            { time: "12:00", status: "Available", availableDateId: 2 },
+            { time: "14:00", status: "Available", availableDateId: 2 },
+            { time: "16:00", status: "Available", availableDateId: 2 },
+            { time: "10:00", status: "Available", availableDateId: 3 },
+            { time: "12:00", status: "Available", availableDateId: 3 },
+            { time: "14:00", status: "Available", availableDateId: 3 },
+            { time: "16:00", status: "Available", availableDateId: 3 },
+            { time: "10:00", status: "Available", availableDateId: 4 },
+            { time: "12:00", status: "Available", availableDateId: 4 },
+            { time: "14:00", status: "Available", availableDateId: 4 },
+            { time: "16:00", status: "Available", availableDateId: 4 },
+            { time: "10:00", status: "Available", availableDateId: 5 },
+            { time: "12:00", status: "Available", availableDateId: 5 },
+            { time: "14:00", status: "Available", availableDateId: 5 },
+            { time: "16:00", status: "Available", availableDateId: 5 },
+            { time: "10:00", status: "Available", availableDateId: 6 },
+            { time: "12:00", status: "Available", availableDateId: 6 },
+            { time: "14:00", status: "Available", availableDateId: 6 },
+            { time: "16:00", status: "Available", availableDateId: 6 },
+            { time: "10:00", status: "Available", availableDateId: 7 },
+            { time: "12:00", status: "Available", availableDateId: 7 },
+            { time: "14:00", status: "Available", availableDateId: 7 },
+            { time: "16:00", status: "Available", availableDateId: 7 },
+            { time: "10:00", status: "Available", availableDateId: 8 },
+            { time: "12:00", status: "Available", availableDateId: 8 },
+            { time: "14:00", status: "Available", availableDateId: 8 },
+            { time: "16:00", status: "Available", availableDateId: 8 },
+        ],
+    });
+
+    console.log("Created timeslots:", timeSlotsData)
 
     process.exit(0);
 }
