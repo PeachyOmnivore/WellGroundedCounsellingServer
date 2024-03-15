@@ -2,6 +2,11 @@ const { findBookings, bookATimeSlotDB, availableDateDB, cancelTimeSlotDB} = requ
 
 const getBookings = async (req, res) => {
     const foundBookings = await findBookings()
+    
+    foundBookings.forEach(booking => {
+      booking.timeSlots.sort((a, b) => a.id - b.id);
+    });
+
     return res.status(200).json({foundBookings})
 }
 
