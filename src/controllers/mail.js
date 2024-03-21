@@ -1,34 +1,42 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 const sendMail = async (req, res) => {
-  const { name, email, subject, message } = req.body
+    const { name, email, subject, message } = req.body;
 
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'lukasallen777@gmail.com',
-      pass: 'cgcq cjqu caqp xsqe'
-    }
-  });
+    const emailContent = `
+      <h1>A message from: ${name}</h1>
+      <p>${message}</p>
+      </br>
+      <p><em>THIS IS A MESSAGE SENT FROM YOUR WEBSITE</em></p>
+      <p>Return address: ${email}<p>
+    `;
 
-  let mailOptions = {
-    from: `${email}`,
-    to: 'lukasallen777@gmail.com',
-    subject: subject,
-    text: `A message sent from: ${name}. The message: ${message}`
-  };
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.USER_EMAIL,
+            pass: process.env.APP_PASS,
+        },
+    });
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log("SERVER ERROR 500:", error)
-      res.status(500).json(error);
-    } else {
-      console.log("INFO RESPONSE:", info)
-      res.status(200).json(`Email sent: ' + ${info.response}`);
-    }
-  });
+    let mailOptions = {
+        from: `${name} <${process.env.USER_EMAIL}>`,
+        to: process.env.USER_EMAIL,
+        subject: `${subject}`,
+        html: emailContent,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log("SERVER ERROR 500:", error);
+            res.status(500).json(error);
+        } else {
+            console.log("INFO RESPONSE:", info);
+            res.status(200).json(`Email sent: ' + ${info.response}`);
+        }
+    });
 };
 
 module.exports = {
-  sendMail
-}
+    sendMail,
+};
