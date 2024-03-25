@@ -6,8 +6,8 @@ async function seed() {
     const users = await prisma.user.createMany({
         data: [
             {
-                email: "fiona.hutch@hotmail.co.uk",
-                password: "$2b$12$4ZayACLYxgqEyskOacb8juj8Kst2DiSS6.TeiEBsKPQ7N9iwR8oH2",
+                email: "fiona@wellgroundedcounselling.com",
+                password: "$2b$12$Y4uZRrmsk.TYvzMn.zpFLenQuKtj5S2bt.h5m3cSEbdgjIv06LiNC",
                 role: "ADMIN",
                 firstName: "Fiona",
                 lastName: "Hutchison",

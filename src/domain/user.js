@@ -13,6 +13,7 @@ const findUser = async (email) => {
             phone: true,
             email: true,
             password: true,
+            role: true,
             timeSlot: {
                 include: {
                     availableDate: true,
