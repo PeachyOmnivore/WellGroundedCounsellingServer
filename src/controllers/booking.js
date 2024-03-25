@@ -2,7 +2,7 @@ const { findBookings, bookATimeSlotDB, availableDateDB, cancelTimeSlotDB} = requ
 
 const getBookings = async (req, res) => {
     const foundBookings = await findBookings()
-    
+
     foundBookings.forEach(booking => {
       booking.timeSlots.sort((a, b) => a.id - b.id);
     });
@@ -32,9 +32,17 @@ const cancelTimeSlot = async ( req, res ) => {
   res.status(201).json({cancelledTimeSlot})
 }
 
+const deleteTimeSlot = async ( req, res ) => {
+  const {timeSlotId} = Number(req.params.id)
+
+  const deletedTimeSlot = await deleteTimeSlotDB(timeSlotId)
+  res.status(202).json({deletedTimeSlot})
+}
+ 
 module.exports = {
     getBookings,
     bookATimeSlot,
     getAvailableDatebyId,
-    cancelTimeSlot
+    cancelTimeSlot,
+    deleteTimeSlot
 }

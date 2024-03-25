@@ -33,9 +33,16 @@ const cancelTimeSlotDB = async (timeSlotId) => await prisma.timeSlot.update({
   }
 })
 
+const deleteTimeSlotDB = async (timeSlotId) => await prisma.timeSlot.delete({
+  where: {
+    id: timeSlotId
+  }
+})
+
 module.exports = {
     findBookings,
     bookATimeSlotDB,
     availableDateDB,
-    cancelTimeSlotDB
+    cancelTimeSlotDB,
+    deleteTimeSlotDB
 }
