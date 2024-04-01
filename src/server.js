@@ -19,5 +19,21 @@ app.use('/users', userRouter)
 app.use('/bookings', bookingRouter)
 app.use('/send-mail', emailRouter)
 
+app.get("/hello", (_, res) => {
+  res.status(200).json({
+      message: "Hello! I am your server!",
+      data: { name: "Sir ServeALot" }})
+})
+
+// catch-all
+app.get("*", (_, res) => {
+  res.status(404).json({
+      status: "fail",
+      data: {
+          resource: "not found"
+      }
+  })
+})
+
 
 module.exports = app
