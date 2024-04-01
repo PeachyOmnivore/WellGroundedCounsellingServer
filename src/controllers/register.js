@@ -1,6 +1,6 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const secret = process.env.JWT_SECRET;
 const { registerDB } = require('../domain/register.js');
 const { findUser } = require('../domain/user.js');
