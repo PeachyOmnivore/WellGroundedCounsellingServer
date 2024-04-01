@@ -21,7 +21,7 @@ app.use('/send-mail', emailRouter)
 
 app.get("/hello", (_, res) => {
   res.status(200).json({
-      message: "Hello! I am your server!",
+      message: "Hello! I am your wellgroundedcounselling server",
       data: { name: "Sir ServeALot" }})
 })
 
